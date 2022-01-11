@@ -3,14 +3,14 @@ body.login {
 }
 .login h1 a {
  	background-image: url('/wp-content/themes/dnc-theme/img/logo-dnconsultants.webp');  
-	height: 140px; 
-	width:250px;
+	height: 168px; 
+	width:300px;
 	background-size:250px
 } 
 .login form{border-color:#333}
-.wp-core-ui .button, .wp-core-ui .button-secondary{color:#ED174B;}
-.wp-core-ui .button-primary{background-color:#ED174B; border-color:#ED174B; border-radius: none;color:#fff !important}
-.wp-core-ui .button-primary:hover{background-color:#54595F; border-color:#54595F; border-radius: none;}
+.wp-core-ui .button, .wp-core-ui .button-secondary{color:#ff9a00;}
+.wp-core-ui .button-primary{background-color:#ff9a00; border-color:#ff9a00; border-radius: none;color:#fff !important}
+.wp-core-ui .button-primary:hover{background-color:#ff5d00; border-color:#ff5d00; border-radius: none;}
 
 input[type=checkbox]:focus, input[type=color]:focus, input[type=date]:focus, input[type=datetime-local]:focus, input[type=datetime]:focus, input[type=email]:focus, input[type=month]:focus, input[type=number]:focus, input[type=password]:focus, input[type=radio]:focus, input[type=search]:focus, input[type=tel]:focus, input[type=text]:focus, input[type=time]:focus, input[type=url]:focus, input[type=week]:focus, select:focus, textarea:focus{border-color: #54595F;box-shadow: 0 0 0 1px #54595F;}
 
