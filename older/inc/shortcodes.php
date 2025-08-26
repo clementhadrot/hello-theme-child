@@ -1,1 +1,0 @@
-<?php // Liste des shorcodes du thème ?>
