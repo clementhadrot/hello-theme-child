@@ -1,5 +1,5 @@
 <?php
-add_action('admin_enqueue_scripts', function() {
+add_action('admin_enqueue_scripts', function($hook) {
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 
     // Ne charge PAS le CSS sur la page du gestionnaire d’éléments Elementor
@@ -16,4 +16,13 @@ add_action('admin_enqueue_scripts', function() {
             '1.0'
         );
     }
+
+    if ($hook == 'media_page_dn-media-editor') : 
+        wp_enqueue_script('dn-media-editor-js', get_stylesheet_directory_uri() .'/js/media-editor.js', ['jquery'], false, true);
+        wp_localize_script('dn-media-editor-js', 'MediaEditorAjax', [
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('media_editor_nonce')
+        ]);
+    endif;
+
 });
