@@ -1,0 +1,38 @@
+/* 🔇 Masquer les éléments liés aux commentaires */
+#menu-comments,
+.comment-count,
+.column-comments,
+#dashboard_recent_comments,
+.meta-box-sortables #commentsdiv,
+#comments-form,
+#replyrow,
+#edit-slug-box a[href*="comment"],
+a[href*="comment-page"],
+a[href*="edit-comments"],
+.post-com-count,
+#wp-admin-bar-comments {
+    display: none !important;
+}
+
+/* 🔇 Masquer les éléments Gutenberg si activé (protection visuelle) */
+.block-editor,
+.edit-post-visual-editor,
+.components-panel,
+.edit-post-header {
+    display: none !important;
+}
+
+/* 🛠 Optionnel : masquer le bouton "Ajouter un bloc" */
+.block-editor-inserter__toggle {
+    display: none !important;
+}
+
+/* Cacher le lien PHP Info par d�faut */
+#toplevel_page_phpinfo {
+    display: none;
+}
+
+/* Afficher le lien PHP Info uniquement pour l'utilisateur autoris� */
+body.utilisateur-autorise-phpinfo #toplevel_page_phpinfo {
+    display: block;
+}

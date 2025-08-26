@@ -1,9 +1,9 @@
 <?php // Base du thème DN Consultants Wordpress
 
-// On inclut les fichiers qu'on a besoin
-
 // Les indispensables
-include 'inc/admin.php'; 
-include 'inc/assets.php'; 
+require_once get_stylesheet_directory() . '/inc/admin.php'; 
+require_once get_stylesheet_directory() . '/inc/assets.php'; 
+require_once get_stylesheet_directory() . '/inc/shortcodes.php'; 
+require_once get_stylesheet_directory() . '/inc/elementor.php'; 
 
-
+add_image_size('carre300', 300, 300, true); // true = crop au centre
