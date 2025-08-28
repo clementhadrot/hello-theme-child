@@ -1,0 +1,1 @@
+<?php // Functions spécifiques pour les clients 
