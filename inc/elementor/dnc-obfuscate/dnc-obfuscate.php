@@ -32,7 +32,7 @@ final class DNC_Elementor_Obfuscate_Links {
     }
 
     public function enqueue_assets() {
-        $base = get_stylesheet_directory_uri() . '/inc/dnc-obfuscate';
+        $base = get_stylesheet_directory_uri() . '/inc/elementor/dnc-obfuscate';
 
         wp_enqueue_style(
             'dnc-obuf-css',

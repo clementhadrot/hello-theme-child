@@ -110,3 +110,30 @@ function _pm_get_top_ancestor_title($post_id) {
     $title = get_the_title($ancestor_id);
     return is_string($title) ? $title : '';
 }
+
+add_shortcode('legende-copyright-hero','LegendeCopyrightHero');
+
+function LegendeCopyrightHero(){
+    global $post;
+    
+    $legend = get_field('legende_image_hero');
+    $copyright = false;
+    $urlimage = get_field('image_hero');
+    if ($urlimage) {
+        $id_image = attachment_url_to_postid($urlimage);
+        $caption = wp_get_attachment_caption($id_image);
+        if(!empty($caption))
+            $copyright = true;
+    }
+    
+    if($copyright && !empty($legend)){
+        echo $legend.' <span class="copyright"></span>';
+    } elseif(!empty($legend)) {
+        echo $legend;
+    } elseif($copyright){
+        echo '<span class="copyright"></span>';
+    } else {
+        return;
+    }
+    
+}

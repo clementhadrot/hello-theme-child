@@ -1,0 +1,57 @@
+/* Variantes (sections & containers) */
+.elementor-section.dnc-bg-beige,
+.e-con.dnc-bg-beige { background-color:#F7F4EE;}
+
+.elementor-section.dnc-bg-vert-fonce,
+.e-con.dnc-bg-vert-fonce { background-color:#39534B; }
+.elementor-section.dnc-bg-vert-fonce .elementor-heading-title,
+.e-con.dnc-bg-vert-fonce .elementor-heading-title,
+.elementor-section.dnc-bg-vert-fonce .elementor-element,
+.e-con.dnc-bg-vert-fonce .elementor-element,
+.e-con.dnc-bg-vert-fonce .elementor-element a{color:#fff !important}
+.e-con.dnc-bg-vert-fonce .elementor-element a{font-weight: 700}
+
+/* Icône via data-attr */
+.elementor-section.dnc-icon-sapin,
+.e-con.dnc-icon-sapin{background-image:url('medias/bg-icon-sapin.svg'); background-repeat: no-repeat;background-position:center center;background-blend-mode: overlay;background-attachment: local;}
+
+.elementor-section.dnc-icon-coeur,
+.e-con.dnc-icon-coeur{background-image:url('medias/bg-icon-coeur.svg'); background-repeat: no-repeat;background-position:left center;background-size:40% 80%;background-attachment: local;}
+
+ .elementor-section.dnc-icon-cigogne,
+.e-con.dnc-icon-cigogne{background-image:url('medias/bg-icon-cigogne.svg'); background-repeat: no-repeat;background-position:center center;background-attachment: local;}
+
+.elementor-section.dnc-icon-bretzel,
+.e-con.dnc-icon-bretzel{background-image:url('medias/bg-icon-bretzel.svg'); background-size:40% 80%; background-repeat: no-repeat;background-repeat: no-repeat;background-position-x: right;background-position-y: center;background-attachment: local;}
+
+/* Positionnements */
+.element-section.dnc-icon-h-center,
+.e-con.dnc-icon-h-center{background-position-x: center !important;}
+
+.element-section.dnc-icon-h-left,
+.e-con.dnc-icon-h-left{background-position-x: left  !important;}
+
+.element-section.dnc-icon-h-right,
+.e-con.dnc-icon-h-right{background-position-x: right  !important;}
+
+.element-section.dnc-icon-v-top,
+.e-con.dnc-icon-v-top{background-position-y: top  !important;}
+
+.element-section.dnc-icon-v-center,
+.e-con.dnc-icon-v-center{background-position-y: center  !important;}
+
+.element-section.dnc-icon-v-bottom,
+.e-con.dnc-icon-v-bottom{background-position-y: bottom  !important;}
+
+
+/* Spécial */
+.elementor-section.dnc-icon-coeur.dnc-bg-vert-fonce,
+.e-con.dnc-icon-coeur.dnc-bg-vert-fonce,
+.elementor-section.dnc-icon-coeur.dnc-bg-beige,
+.e-con.dnc-icon-coeur.dnc-bg-beige{background-image:url('medias/bg-icon-coeur-noir.svg');background-blend-mode: overlay;}
+
+
+@media (max-width:768px){
+    .elementor-section.dnc-icon-coeur, 
+    .e-con.dnc-icon-coeur{background-position:90% 0;background-image:url('medias/bg-icon-coeur-mobile.svg')}
+}

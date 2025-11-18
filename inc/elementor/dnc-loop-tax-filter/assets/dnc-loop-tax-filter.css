@@ -1,0 +1,5 @@
+.dnc-tax-filter{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin:0 0 1rem}
+.dnc-tax-filter__label{font-weight:600;opacity:.8;margin-right:.25rem}
+.dnc-tax-filter__link{display:inline-block;padding:.35rem .6rem;border:1px solid rgba(0,0,0,.12);border-radius:999px;text-decoration:none;font-size:.9rem;line-height:1}
+.dnc-tax-filter__link:hover{border-color:rgba(0,0,0,.28)}
+.dnc-tax-filter__link.is-active{border-color:currentColor;font-weight:600}

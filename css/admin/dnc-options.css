@@ -1,0 +1,324 @@
+/* ============================================================
+   BASE WRAPPER
+============================================================ */
+.dnc-wrap {
+    max-width: 1180px;
+    margin-top: 25px;
+}
+
+.dnc-title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+/* ============================================================
+   TABS
+============================================================ */
+.dnc-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.dnc-tab {
+    padding: 10px 18px;
+    border: 1px solid #ccd0d4;
+    background: #f7f7f7;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.dnc-tab.active {
+    background: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+
+
+/* ============================================================
+   TAB CONTENT
+============================================================ */
+.dnc-tab-content {
+    display: none;
+}
+
+.dnc-tab-content.active {
+    display: block;
+}
+
+
+
+/* ============================================================
+   CARD (Material Style)
+============================================================ */
+.dnc-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e2e2e2;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.dnc-card-title {
+    font-size: 18px;
+    margin: 0 0 18px 0;
+    font-weight: 600;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+
+/* ============================================================
+   FIELD GROUPS
+============================================================ */
+.dnc-field-group {
+    margin-bottom: 20px;
+}
+
+.dnc-field-label {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.dnc-field-desc {
+    font-size: 13px;
+    color: #777;
+    margin-top: 4px;
+}
+
+.dnc-field-desc i {
+    opacity: .8;
+    margin-right: 4px;
+}
+
+
+
+/* ============================================================
+   SWITCH iOS STYLE
+============================================================ */
+.dnc-has-switch {
+    display: flex;
+    flex-direction: column;
+}
+
+.dnc-field-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dnc-switch {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    display: inline-block;
+}
+
+.dnc-switch input {
+    display: none;
+}
+
+.dnc-slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 26px;
+    top: 0; left: 0; right: 0; bottom: 0;
+    transition: .3s;
+}
+
+.dnc-slider:before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 2px;
+    top: 2px;
+    background: #fff;
+    border-radius: 50%;
+    transition: .3s;
+}
+
+.dnc-switch input:checked + .dnc-slider {
+    background-color: #2271b1;
+}
+
+.dnc-switch input:checked + .dnc-slider:before {
+    transform: translateX(24px);
+}
+
+
+
+/* ============================================================
+   CHECKBOX & RADIO
+============================================================ */
+.dnc-input-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.dnc-radio,
+.dnc-check {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+}
+
+
+
+/* ============================================================
+   TEXT INPUT
+============================================================ */
+.dnc-input {
+    width: 300px;
+    padding: 7px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+
+
+/* ============================================================
+   ACCORDIONS
+============================================================ */
+.dnc-accordion {
+    margin-bottom: 15px;
+}
+
+.dnc-accordion-btn {
+    width: 100%;
+    background: #f3f4f4;
+    padding: 12px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid #d0d0d0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.dnc-accordion-btn.active {
+    background: #e8eef5;
+}
+
+.dnc-accordion-content {
+    display: none;
+    padding: 10px 4px;
+}
+
+.dnc-accordion-content.active {
+    display: block;
+}
+
+
+
+/* ============================================================
+   SUBMIT BUTTON
+============================================================ */
+.dnc-submit-wrapper {
+    text-align: right;
+    margin: 30px 0;
+}
+
+.dnc-save-btn {
+    padding: 10px 20px !important;
+    font-size: 16px !important;
+}
+
+/* ============================================================
+   DASHBOARD GRID
+============================================================ */
+.dnc-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.dnc-dash-card {
+    background: #fff;
+    padding: 18px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.dnc-dash-card i {
+    font-size: 26px;
+    color: #2271b1;
+}
+
+.dnc-dash-card h4 {
+    margin-top: 10px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.dnc-dash-card ul {
+    margin: 10px 0 0;
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+body.dnc-darkmode .dnc-dash-card {
+    background: #2b2b2e;
+    border-color: #444;
+}
+
+
+
+/* ============================================================
+   DARKMODE (optionnel si tu l'actives plus tard)
+============================================================ */
+body.dnc-darkmode .dnc-card {
+    background: #2c2d30;
+    border-color: #444;
+}
+
+body.dnc-darkmode .dnc-tab {
+    background: #333 !important;
+    color: #eee;
+}
+
+body.dnc-darkmode .dnc-tab.active {
+    background: #222 !important;
+    border-color: #222 !important;
+}
+
+body.dnc-darkmode .dnc-card-title {
+    color: #fff;
+}
+
+body.dnc-darkmode .dnc-field-label {
+    color: #e2e2e2;
+}
+
+body.dnc-darkmode .dnc-field-desc {
+    color: #aaa;
+}
+
+body.dnc-darkmode .dnc-input {
+    background: #444;
+    border-color: #666;
+    color: #fff;
+}

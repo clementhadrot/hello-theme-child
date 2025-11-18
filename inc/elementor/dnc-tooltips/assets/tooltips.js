@@ -24,6 +24,8 @@
       var maxWidth  = parseInt(el.getAttribute('data-dnc-maxwidth') || '260', 10);
       var delay     = parseInt(el.getAttribute('data-dnc-delay') || '50', 10);
 
+      trigger = trigger + 'click touch';
+
       if (!content.trim()) return;
 
       el._dncTippy = tippy(el, {

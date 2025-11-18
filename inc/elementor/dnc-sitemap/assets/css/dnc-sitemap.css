@@ -1,0 +1,213 @@
+/* === DN Sitemap – Thème propre & accessible === */
+:root{
+  --dn-gap: 1rem;                  /* déjà utilisé par ton layout */
+  --dn-col-radius: 10px;
+  --dn-col-pad: .75rem;
+  --dn-fg: #1f2937;                /* slate-800 */
+  --dn-fg-muted: #6b7280;          /* slate-500 */
+  --dn-border: #e5e7eb;            /* gray-200 */
+  --dn-bg: #ffffff;
+  --dn-link: #0ea5e9;              /* sky-500 */
+  --dn-link-hover: #0284c7;        /* sky-600 */
+  --dn-focus: #111827;             /* gray-900 */
+  --dn-btn-bg: #f3f4f6;            /* gray-100 */
+  --dn-btn-bg-hover: #e5e7eb;      /* gray-200 */
+  --dn-btn-text: #111827;          /* gray-900 */
+}
+
+/* Conteneur principal */
+.dn-cl-wrap{
+  color: var(--dn-fg);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* Colonnes en Flex (déjà en place côté plugin) */
+.dn-cols{
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--dn-gap,1rem);
+}
+
+/* Chaque colonne (un <ul>) a un fond léger et un petit padding pour “carter” le contenu */
+.dn-cols > ul{
+  flex:1 1 calc(100% / var(--dn-cols-lg,1));
+  min-width:260px; /* évite des colonnes trop étroites */
+  margin:0;
+  padding: var(--dn-col-pad);
+  background: var(--dn-bg);
+  border: 1px solid var(--dn-border);
+  border-radius: var(--dn-col-radius);
+}
+
+/* Responsif (reprend ta logique via variables) */
+@media (min-width:480px){
+  .dn-cols > ul{ flex-basis: calc(100% / var(--dn-cols-sm, var(--dn-cols-lg,1))); }
+}
+@media (min-width:768px){
+  .dn-cols > ul{ flex-basis: calc(100% / var(--dn-cols-md, var(--dn-cols-lg,1))); }
+}
+
+/* Listes */
+.dn-cl-list{ list-style: none; padding-left:0; margin:0; }
+.dn-cl-list li{
+  position: relative;
+  margin: .35rem 0;
+  padding-left: 1.125rem;
+}
+.dn-cl-list li::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: .7em;
+  width: .45rem;
+  height: .45rem;
+  border-radius: 2px;
+  background: var(--dn-border);
+}
+
+/* Sous-niveaux (notamment pour “Pages”) */
+.dn-cl-list li > ul{
+  margin-top: .25rem;
+  padding-left: .75rem;
+  border-left: 1px dashed var(--dn-border);
+}
+.dn-cl-list li > ul > li{ margin: .25rem 0; }
+
+/* Liens */
+.dn-cl-list a{
+  color: var(--dn-fg);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--dn-fg) 30%, transparent);
+  text-underline-offset: 2px;
+  transition: color .15s ease, text-decoration-color .15s ease;
+}
+.dn-cl-list a:hover{
+  color: var(--dn-link-hover);
+  text-decoration-color: var(--dn-link-hover);
+}
+.dn-cl-list a:focus-visible{
+  outline: 3px solid var(--dn-focus);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Compteur à droite d’un titre si utilisé */
+.dn-sitemap-count{
+  opacity:.75;
+  font-size:.875rem;
+  margin-left:.35rem;
+}
+
+/* Accordéon <details> stylé */
+.dn-el-acc{
+  border: 1px solid var(--dn-border);
+  border-radius: 12px;
+  background: var(--dn-bg);
+  padding: .25rem .25rem .5rem;
+}
+.dn-el-acc + .dn-el-acc{ margin-top: 1rem; }
+
+.dn-el-acc > summary{
+  list-style: none;       /* retire le triangle natif */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .6rem .65rem;
+  margin: .1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--dn-fg);
+}
+.dn-el-acc > summary::-webkit-details-marker{ display:none; }
+
+/* Chevron custom */
+.dn-el-acc > summary > span[aria-hidden="true"]{
+  display:inline-block;
+  transform: rotate(0deg);
+  transition: transform .2s ease;
+}
+.dn-el-acc[open] > summary > span[aria-hidden="true"]{
+  transform: rotate(90deg);
+}
+
+/* Hover/focus summary */
+.dn-el-acc > summary:hover{
+  background: var(--dn-btn-bg);
+}
+.dn-el-acc > summary:focus-visible{
+  outline: 3px solid var(--dn-focus);
+  outline-offset: 3px;
+}
+
+/* Bouton “Charger plus” */
+.dn-load-more{
+  margin-top: .75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  border: 1px solid var(--dn-border);
+  background: var(--dn-btn-bg);
+  color: var(--dn-btn-text);
+  padding: .55rem .9rem;
+  border-radius: 10px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, transform .04s ease;
+}
+.dn-load-more:hover{
+  background: var(--dn-btn-bg-hover);
+  border-color: color-mix(in oklab, var(--dn-border) 60%, black 5%);
+}
+.dn-load-more:active{ transform: translateY(1px); }
+.dn-load-more[aria-busy="true"]{
+  opacity:.7;
+  cursor: progress;
+}
+
+/* Petit spinner avec :before quand busy */
+.dn-load-more[aria-busy="true"]::before{
+  content:"";
+  width:.9em;height:.9em;border-radius:50%;
+  border:2px solid currentColor;border-right-color:transparent;
+  display:inline-block;
+  animation: dnspin .6s linear infinite;
+}
+@keyframes dnspin{ to{ transform: rotate(360deg);} }
+
+/* Séparateurs doux entre colonnes sur desktop large (optionnel) */
+@media (min-width:1024px){
+  .dn-cols{
+    background:
+      linear-gradient(to right, transparent calc(var(--dn-gap)/2), var(--dn-border) calc(var(--dn-gap)/2), var(--dn-border) calc(var(--dn-gap)/2 + 1px), transparent calc(var(--dn-gap)/2 + 1px));
+    background-size: calc(100% / var(--dn-cols-lg,1)) 100%;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    padding: calc(var(--dn-gap)/2);
+    border-radius: 12px;
+  }
+}
+
+/* Mode sombre (si le site l’active) */
+@media (prefers-color-scheme: dark){
+  :root{
+    --dn-fg: #e5e7eb;
+    --dn-fg-muted: #9ca3af;
+    --dn-border: #374151;
+    --dn-bg: #111827;
+    --dn-link: #38bdf8;
+    --dn-link-hover: #7dd3fc;
+    --dn-focus: #f4f4f5;
+    --dn-btn-bg: #111827;
+    --dn-btn-bg-hover: #0b1220;
+    --dn-btn-text: #e5e7eb;
+  }
+}
+
+/* Réduction d’animations si l’utilisateur préfère */
+@media (prefers-reduced-motion: reduce){
+  .dn-el-acc > summary > span[aria-hidden="true"],
+  .dn-load-more[aria-busy="true"]::before{ transition: none; animation: none; }
+}

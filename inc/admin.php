@@ -4,7 +4,7 @@ require_once get_stylesheet_directory() . '/inc/admin/login-page.php';
 require_once get_stylesheet_directory() . '/inc/admin/options-page.php';
 
 // Médias
-require_once get_stylesheet_directory() . '/inc/admin/admin-ajax.php';
+require_once get_stylesheet_directory() . '/inc/admin/admin-media-ajax.php';
 require_once get_stylesheet_directory() . '/inc/admin/media-editor.php';
 require_once get_stylesheet_directory() . '/inc/cli/media-dnc-cli.php';
 

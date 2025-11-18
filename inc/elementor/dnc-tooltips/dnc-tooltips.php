@@ -29,7 +29,7 @@ final class DNC_Elementor_Tooltips {
     }
 
     public function enqueue_assets() {
-        $base = get_stylesheet_directory_uri() . '/inc/dnc-tooltips';
+        $base = get_stylesheet_directory_uri() . '/inc/elementor/dnc-tooltips';
 
         // Tippy.js (léger et robuste) + Popper inclus
 
@@ -71,7 +71,7 @@ final class DNC_Elementor_Tooltips {
         $element->start_controls_section(
             'dnc_tooltip_section',
             [
-                'label' => __('Tooltip', 'dnc-tooltips'),
+                'label' => __('Tooltip', 'dnc-theme'),
                 'tab'   => \Elementor\Controls_Manager::TAB_ADVANCED,
             ]
         );
@@ -79,7 +79,7 @@ final class DNC_Elementor_Tooltips {
         $element->add_control(
             'dnc_tooltip_enable',
             [
-                'label'        => __('Activer', 'dnc-tooltips'),
+                'label'        => __('Activer', 'dnc-theme'),
                 'type'         => \Elementor\Controls_Manager::SWITCHER,
                 'return_value' => 'yes',
                 'default'      => '',
@@ -89,9 +89,9 @@ final class DNC_Elementor_Tooltips {
         $element->add_control(
             'dnc_tooltip_content',
             [
-                'label'       => __('Texte du tooltip', 'dnc-tooltips'),
+                'label'       => __('Texte du tooltip', 'dnc-theme'),
                 'type'        => \Elementor\Controls_Manager::TEXTAREA,
-                'placeholder' => __('Saisir le texte du tooltip…', 'dnc-tooltips'),
+                'placeholder' => __('Saisir le texte du tooltip…', 'dnc-theme'),
                 'condition'   => ['dnc_tooltip_enable' => 'yes'],
             ]
         );
@@ -99,7 +99,7 @@ final class DNC_Elementor_Tooltips {
         $element->add_control(
             'dnc_tooltip_placement',
             [
-                'label'     => __('Position', 'dnc-tooltips'),
+                'label'     => __('Position', 'dnc-theme'),
                 'type'      => \Elementor\Controls_Manager::SELECT,
                 'options'   => [
                     'top'    => 'Top',
@@ -115,12 +115,12 @@ final class DNC_Elementor_Tooltips {
         $element->add_control(
             'dnc_tooltip_trigger',
             [
-                'label'     => __('Déclencheur', 'dnc-tooltips'),
+                'label'     => __('Déclencheur', 'dnc-theme'),
                 'type'      => \Elementor\Controls_Manager::SELECT,
                 'options'   => [
-                    'mouseenter focus' => __('Survol & focus', 'dnc-tooltips'),
-                    'click'            => __('Clic', 'dnc-tooltips'),
-                    'manual'           => __('Manuel (avancé)', 'dnc-tooltips'),
+                    'mouseenter focus' => __('Survol & focus', 'dnc-theme'),
+                    'click'            => __('Clic', 'dnc-theme'),
+                    'manual'           => __('Manuel (avancé)', 'dnc-theme'),
                 ],
                 'default'   => 'mouseenter focus',
                 'condition' => ['dnc_tooltip_enable' => 'yes'],
@@ -130,11 +130,11 @@ final class DNC_Elementor_Tooltips {
         $element->add_control(
             'dnc_tooltip_theme',
             [
-                'label'     => __('Thème', 'dnc-tooltips'),
+                'label'     => __('Thème', 'dnc-theme'),
                 'type'      => \Elementor\Controls_Manager::SELECT,
                 'options'   => [
-                    'dark'  => __('Sombre', 'dnc-tooltips'),
-                    'light' => __('Clair', 'dnc-tooltips'),
+                    'dark'  => __('Sombre', 'dnc-theme'),
+                    'light' => __('Clair', 'dnc-theme'),
                 ],
                 'default'   => 'dark',
                 'condition' => ['dnc_tooltip_enable' => 'yes'],
@@ -144,7 +144,7 @@ final class DNC_Elementor_Tooltips {
         $element->add_control(
             'dnc_tooltip_maxwidth',
             [
-                'label'     => __('Largeur max (px)', 'dnc-tooltips'),
+                'label'     => __('Largeur max (px)', 'dnc-theme'),
                 'type'      => \Elementor\Controls_Manager::NUMBER,
                 'min'       => 120,
                 'max'       => 600,
@@ -157,7 +157,7 @@ final class DNC_Elementor_Tooltips {
         $element->add_control(
             'dnc_tooltip_delay',
             [
-                'label'     => __('Délai (ms) ouverture/fermeture', 'dnc-tooltips'),
+                'label'     => __('Délai (ms) ouverture/fermeture', 'dnc-theme'),
                 'type'      => \Elementor\Controls_Manager::SLIDER,
                 'size_units'=> ['ms'],
                 'range'     => ['ms' => ['min' => 0, 'max' => 2000, 'step' => 50]],

@@ -41,6 +41,7 @@ jQuery(document).ready(function ($) {
     const title = $row.find('.title-field').val();
     const legende = $row.find('.legende-field').val();
     const alt = $row.find('.alt-field').val();
+    const desc = $row.find('.desc-field').val();
     const $actionCell = $row.find('td').last();
 
     $.post(MediaEditorAjax.ajax_url, {
@@ -48,6 +49,7 @@ jQuery(document).ready(function ($) {
         id: id,
         title: title,
         legende: legende,
+        desc: desc,
         alt: alt,
         _ajax_nonce: MediaEditorAjax.nonce
     }, function (response) {

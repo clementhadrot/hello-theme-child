@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+/* Zone repliable avec animation de hauteur */
+.dnc-collapsible {
+  overflow: hidden;
+  transition: height .28s ease;
+  will-change: height;
+}
+
+/* Bouton */
+.dnc-toggle {display: inline-flex;position: absolute;width:33px;align-items: center;border: none;padding: 10px;border-radius: 4px;font: inherit;
+  cursor: pointer;background:url(../../../../img/icon-collapse-moins.svg) center center no-repeat #D7E0AC;text-indent:-9999px;top:-10px; right:0;box-sizing: content-box;
+border:5px solid #D7E0AC; color:#000; font-weight: bolder;}
+.dnc-toggle:hover,.dnc-toggle:focus{background-color:#A9BB4C; border-color:#A9BB4C}
+
+/* Petite icône (chevron) */
+.dnc-toggle__chev {display: none;transition: transform .2s ease;}
+.dnc-toggle[aria-expanded="false"] {border-color:#39534B;background:url(../../../../img/icon-collapse-plus.svg) center center no-repeat #39534B;}
+
+@media(max-width: 768px){
+  .dnc-toggle{width:18px; height:18px;padding:5px;right:10px;}
+}

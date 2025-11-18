@@ -1,0 +1,11 @@
+.dnc-qtf { margin:0 0 1rem 0;display:flex;align-content: center; align-items: center; gap:2rem }
+.dnc-qtf__block { margin-bottom:.75rem; display:flex; gap:0.5rem; align-content: center; align-items: center}
+.dnc-qtf__label { margin:0 0 .4rem 0; }
+.dnc-qtf__terms { display:flex; flex-wrap:wrap; gap:.5rem; }
+.dnc-qtf__chip {
+    display:inline-block; padding:.45rem .7rem; border:1px solid rgba(0,0,0,.12);
+    border-radius:999px; text-decoration:none; cursor:pointer;
+}
+.dnc-qtf__chip--active { border-color: currentColor; font-weight:600; }
+
+.dnc-qtf__count { margin: .25rem 0 .5rem; font-weight:600; }
