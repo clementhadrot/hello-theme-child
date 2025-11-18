@@ -60,43 +60,78 @@ function _pm_current_post_id() {
 }
 
 /**
- * Retourne le titre du parent top-level dans n'importe quel menu enregistré.
- * Si aucun menu ne contient l'item, retourne null.
+ * Construit une map [page_id => titre du parent top-level] pour tous les menus.
+ * Traité une seule fois par requête grâce à un cache statique.
  */
-function _pm_find_menu_top_parent_title_for_post($post_id) {
+function _pm_get_page_menu_top_titles() {
+    static $map = null;
+    if ($map !== null) {
+        return $map;
+    }
+
+    $map = [];
     $locations = get_nav_menu_locations();
-    if (!is_array($locations) || empty($locations)) return null;
+    if (!is_array($locations) || empty($locations)) return $map;
+
+    $processed_menus = [];
 
     foreach ($locations as $menu_term_id) {
+        if (isset($processed_menus[$menu_term_id])) {
+            continue;
+        }
+
         $menu_obj = wp_get_nav_menu_object($menu_term_id);
         if (!$menu_obj) continue;
+
+        $processed_menus[$menu_obj->term_id] = true;
 
         $items = wp_get_nav_menu_items($menu_obj->term_id, ['update_post_term_cache' => false]);
         if (empty($items)) continue;
 
         // Index des items par ID pour remonter les parents rapidement
         $by_id = [];
-        foreach ($items as $it) $by_id[$it->ID] = $it;
-
-        // Trouver l'item qui pointe vers cette page
-        $current = null;
         foreach ($items as $it) {
-            if (isset($it->object_id, $it->object) && (int)$it->object_id === (int)$post_id && $it->object === 'page') {
-                $current = $it;
-                break;
+            $by_id[$it->ID] = $it;
+        }
+
+        foreach ($items as $it) {
+            if (empty($it->object_id) || $it->object !== 'page') {
+                continue;
+            }
+
+            $top = $it;
+            $visited = [];
+
+            while (!empty($top->menu_item_parent) && isset($by_id[$top->menu_item_parent])) {
+                // Empêcher des boucles infinies si des liens parents sont corrompus
+                if (isset($visited[$top->menu_item_parent])) {
+                    break;
+                }
+
+                $visited[$top->menu_item_parent] = true;
+                $top = $by_id[$top->menu_item_parent];
+            }
+
+            if (isset($top->title) && $top->title !== '') {
+                $page_id = (int) $it->object_id;
+                if (!isset($map[$page_id])) {
+                    // On garde la première occurrence pour éviter d'écraser un emplacement déjà trouvé
+                    $map[$page_id] = $top->title;
+                }
             }
         }
-        if (!$current) continue;
-
-        // Remonter jusqu'au top-level
-        $top = $current;
-        while (!empty($top->menu_item_parent) && isset($by_id[$top->menu_item_parent])) {
-            $top = $by_id[$top->menu_item_parent];
-        }
-
-        return isset($top->title) ? $top->title : '';
     }
-    return null;
+
+    return $map;
+}
+
+/**
+ * Retourne le titre du parent top-level dans n'importe quel menu enregistré.
+ * Si aucun menu ne contient l'item, retourne null.
+ */
+function _pm_find_menu_top_parent_title_for_post($post_id) {
+    $map = _pm_get_page_menu_top_titles();
+    return $map[$post_id] ?? null;
 }
 
 /**
@@ -114,26 +149,45 @@ function _pm_get_top_ancestor_title($post_id) {
 add_shortcode('legende-copyright-hero','LegendeCopyrightHero');
 
 function LegendeCopyrightHero(){
-    global $post;
-    
     $legend = get_field('legende_image_hero');
+    $legend_text = is_string($legend) ? trim($legend) : '';
     $copyright = false;
-    $urlimage = get_field('image_hero');
-    if ($urlimage) {
-        $id_image = attachment_url_to_postid($urlimage);
-        $caption = wp_get_attachment_caption($id_image);
-        if(!empty($caption))
-            $copyright = true;
+    static $attachment_caption_cache = [];
+    static $attachment_id_cache = [];
+    $image_field = get_field('image_hero');
+    $urlimage = is_array($image_field) && isset($image_field['url']) ? $image_field['url'] : $image_field;
+
+    if (is_string($urlimage) && $urlimage !== '') {
+        if (isset($attachment_id_cache[$urlimage])) {
+            $id_image = $attachment_id_cache[$urlimage];
+        } else {
+            $id_image = attachment_url_to_postid($urlimage);
+            $attachment_id_cache[$urlimage] = $id_image;
+        }
+
+        if ($id_image) {
+            if (isset($attachment_caption_cache[$id_image])) {
+                $caption = $attachment_caption_cache[$id_image];
+            } else {
+                $caption = wp_get_attachment_caption($id_image);
+                $attachment_caption_cache[$id_image] = $caption;
+            }
+            if (is_string($caption) && $caption !== '') {
+                $copyright = true;
+            }
+        }
     }
-    
-    if($copyright && !empty($legend)){
-        echo $legend.' <span class="copyright"></span>';
-    } elseif(!empty($legend)) {
-        echo $legend;
-    } elseif($copyright){
-        echo '<span class="copyright"></span>';
-    } else {
-        return;
+
+    $output = '';
+
+    if ($legend_text !== '') {
+        $output = esc_html($legend_text);
     }
-    
+
+    if ($copyright) {
+        $output .= $output !== '' ? ' ' : '';
+        $output .= '<span class="copyright"></span>';
+    }
+
+    return $output;
 }
