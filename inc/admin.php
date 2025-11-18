@@ -6,6 +6,7 @@ require_once get_stylesheet_directory() . '/inc/admin/options-page.php';
 // Médias
 require_once get_stylesheet_directory() . '/inc/admin/admin-ajax.php';
 require_once get_stylesheet_directory() . '/inc/admin/media-editor.php';
+require_once get_stylesheet_directory() . '/inc/cli/media-dnc-cli.php';
 
 if (get_current_user_id() == 1) {
     require_once get_stylesheet_directory() . '/inc/admin/phpinfo.php';

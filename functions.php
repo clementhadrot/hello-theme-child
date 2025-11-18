@@ -8,4 +8,4 @@ require_once get_stylesheet_directory() . '/inc/elementor.php';
 
 require_once get_stylesheet_directory() . '/inc/specifiques-client.php'; 
 
-add_image_size('carre300', 300, 300, true); // true = crop au centre
+//add_image_size('carre300', 300, 300, true); // true = crop au centre

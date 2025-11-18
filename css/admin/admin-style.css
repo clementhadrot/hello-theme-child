@@ -36,3 +36,6 @@ a[href*="edit-comments"],
 body.utilisateur-autorise-phpinfo #toplevel_page_phpinfo {
     display: block;
 }
+
+.media_page_dn-media-editor .usage-count{box-sizing: border-box; margin: 1px 0 -1px 6px; padding: 2px 6px 3px 5px; width: 18px; height: 18px; border-radius: 50%;
+    background-color: #ca4a1f; color: #fff;  font-size: 11px; line-height: 1.6; text-align: center;}

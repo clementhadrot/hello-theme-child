@@ -1,0 +1,5 @@
+/* Style discret pour les liens obfusqués (optionnel) */
+.dnc-obfuscated {
+  cursor: pointer;
+  /* vous pouvez ajouter un petit indicateur si souhaité */
+}

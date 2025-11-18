@@ -1,0 +1,25 @@
+/* Thèmes Tippy minimalistes + ajustements */
+.tippy-box[data-theme~='dark'] {
+  background-color: var(--e-global-color-secondary);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.3;
+  padding: 6px 8px;
+}
+.tippy-box[data-theme~='dark'] .tippy-arrow { color: var(--e-global-color-secondary); }
+
+.tippy-box[data-theme~='light'] {
+  background-color: #ffffff;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.3;
+  padding: 6px 8px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.06);
+}
+.tippy-box[data-theme~='light'] .tippy-arrow { color: #ffffff; }
+
+/* Optionnel : curseur d’aide */
+/*.dnc-has-tooltip { cursor: help; }*/
