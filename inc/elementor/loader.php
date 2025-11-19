@@ -14,4 +14,4 @@ if (!dnc_weather_is_disabled()) {
 }
 
 require_once $elementor_base . 'dnc-sitemap/dnc-sitemap.php';
-require_once $elementor_base . 'dnc-accessibility/dnc-aria-buttons.php';
+require_once $elementor_base . 'dnc-accessibility/dnc-aria-addon.php';
