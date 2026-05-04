@@ -13,6 +13,11 @@ if (is_admin()) {
     require_once DNC_INC_DIR . '/admin/index.php';
 }
 
+$options = get_option('dnc_theme_options');
+if (!empty($options['disable_blog'])) {
+    require_once DNC_INC_DIR . '/admin/disable-blog.php';
+}
+
 if (defined('ELEMENTOR_VERSION')) {
     require_once DNC_INC_DIR . '/elementor/loader.php';
 }

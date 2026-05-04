@@ -625,7 +625,7 @@ add_action('init', function () {
         // Disable post type support
         unregister_post_type('post');
     }
-});
+}, 20);
 
 
 /* ----------------------------------------------------------------------
